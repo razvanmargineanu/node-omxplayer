@@ -36,8 +36,10 @@ function buildArgs (source, givenOutput, loop, initialVolume, showOsd, extraArgs
 	}
 
 	const argsArray = [];
-	for (let [key, value] of Object.entries(extraArgs)){
-		argsArray.push(key, value);
+	if(extraArgs) {
+		for (let [key, value] of Object.entries(extraArgs)){
+			argsArray.push(key, value);
+		}
 	}
 
 	let args = [source, '-o', output, '--blank', osd ? '' : '--no-osd', ...argsArray];
