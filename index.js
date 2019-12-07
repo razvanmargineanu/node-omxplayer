@@ -130,7 +130,8 @@ function Omx (source, output, loop, initialVolume, showOsd, extraArgs) {
 		if (open) {
 			player.on('close', () => { player = spawnPlayer(src, out, loop, initialVolume, showOsd, extraArgs); });
 			player.removeListener('close', updateStatus);
-			writeStdin('q');
+			player.kill('SIGINT');
+			// writeStdin('q');
 
 		} else {
 
